@@ -20,7 +20,7 @@ import (
 	"runtime"
 	"strings"
 
-	"unlegacy/soong/android"
+	//"unlegacy/soong/android"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -117,8 +117,9 @@ type variableProperties struct {
 			Srcs         []string
 		}
 
-		// include Unlegacy variables
-		*android.Product_variables
+		Needs_platform_textrels struct {
+			Cppflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -236,8 +237,7 @@ type productVariables struct {
 
 	VendorVars map[string]map[string]string `json:",omitempty"`
 
-	// include Unlegacy variables
-	*android.ProductVariables
+	Needs_platform_textrels *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
