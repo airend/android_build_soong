@@ -68,10 +68,11 @@ var ClangUnknownCflags = sorted([]string{
 	"--enable-stdcall-fixup",
 })
 
-var ClangLibToolingUnknownCflags = []string{
+var ClangLibToolingUnknownCflags = sorted([]string{
 	"-flto*",
 	"-fsanitize*",
-}
+	"-fno-sanitize=implicit-integer-sign-change",
+})
 
 func init() {
 	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
